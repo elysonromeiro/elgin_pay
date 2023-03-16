@@ -111,6 +111,28 @@ internal class Handlers(var context: Context, var activity: Activity) : MethodCh
                     result.success(false)
                 }
             }
+            "imprimirQrCode" -> {
+                try {
+                    if ((call.arguments as String).isNullOrEmpty()){
+                        return result.success(false)
+                    }
+                    int size = (Integer) map.get("qrSize");
+                    String text = (String) map.get("text");
+                    String align = (String) map.get("align");
+                    int nivelCorrecao = 2;
+                    int result;
+                    int alignValue;
+
+
+                    Termica.DefinePosicao(1);
+
+                    result = Termica.ImpressaoQRCode(call.arguments as String, 15, nivelCorrecao);
+
+                    result.success(true)
+                } catch (e: Exception) {
+                    result.success(false)
+                }
+            }
             "isElginPOS" -> {
                 try {
                     val devices = listOf("EP5855","MiniPDV M8", "MiniPDV M10")

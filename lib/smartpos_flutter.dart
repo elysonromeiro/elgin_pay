@@ -90,6 +90,14 @@ class ElginPAY {
     }
   }
 
+  static Future<bool> imprimirQrCode(String text) async {
+    try {
+      return await _channel.invokeMethod('imprimirImagem', text);
+    } on PlatformException catch (e) {
+      throw '${e.message}';
+    }
+  }
+
   static Future<bool> isElginPOS() async {
     if (kIsWeb || Platform.isIOS || Platform.isWindows) return false;
 
