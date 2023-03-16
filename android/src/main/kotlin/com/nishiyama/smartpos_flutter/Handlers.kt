@@ -122,7 +122,7 @@ internal class Handlers(var context: Context, var activity: Activity) : MethodCh
                     
                     Termica.DefinePosicao(1);
 
-                    Termica.ImpressaoQRCode(call.arguments as String, 15, 2);
+                    Termica.ImpressaoQRCode("isso é um teste", 15, 2);
 
                     Termica.FechaConexaoImpressora()
 
