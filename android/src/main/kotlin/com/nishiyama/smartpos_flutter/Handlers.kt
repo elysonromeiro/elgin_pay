@@ -117,9 +117,14 @@ internal class Handlers(var context: Context, var activity: Activity) : MethodCh
                         return result.success(false)
                     }
 
+                    Termica.setActivity(activity)
+                    Termica.AbreConexaoImpressora(5, "", "", 0)
+                    
                     Termica.DefinePosicao(1);
 
                     Termica.ImpressaoQRCode(call.arguments as String, 15, 2);
+
+                    Termica.FechaConexaoImpressora()
 
                     result.success(true)
                 } catch (e: Exception) {
